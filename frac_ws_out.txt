@@ -1,0 +1,4 @@
+Wolfram 14.2.1 Kernel for Microsoft Windows (64-bit)
+Copyright 1988-2025 Wolfram Research, Inc.
+
+In[1]:= 

@@ -1,0 +1,30 @@
+(* Verification: R-L (and Caputo) half-derivative of f(x)=Sqrt[x]. Cross-check
+   for differint / pyfod / numfracpy. Returns one result list. Target: Sqrt[Pi]/2 *)
+
+alpha = 1/2; beta = 1/2; x0 = 1/2;
+target = Sqrt[Pi]/2;
+f[t_] := Sqrt[t];
+
+closedForm = Gamma[beta + 1]/Gamma[beta + 1 - alpha] * x0^(beta - alpha);
+
+Iexpr = Integrate[f[t]/Sqrt[x - t], {t, 0, x}, Assumptions -> x > 0];
+rlSym = (1/Sqrt[Pi]) D[Iexpr, x] /. x -> x0;
+
+numI[xx_] := NIntegrate[f[t]/Sqrt[xx - t], {t, 0, xx}, WorkingPrecision -> 30];
+h = 10^-6;
+numRL = (1/Sqrt[Pi]) ((numI[x0 + h] - numI[x0 - h])/(2 h));
+
+numCaputo = (1/Sqrt[Pi]) NIntegrate[f'[t]/Sqrt[x0 - t], {t, 0, x0}, WorkingPrecision -> 30];
+
+{
+  "target_sqrt_pi_over_2" -> N[target, 20],
+  "closed_form"           -> N[closedForm, 20],
+  "inner_integral_I(x)"   -> Iexpr,
+  "RL_symbolic"           -> N[rlSym, 20],
+  "RL_numeric_centraldiff"-> N[numRL, 20],
+  "Caputo_numeric"        -> N[numCaputo, 20],
+  "residual_closed"       -> N[Abs[closedForm - target], 10],
+  "residual_RLsym"        -> N[Abs[rlSym - target], 10],
+  "residual_RLnum"        -> N[Abs[numRL - target], 10],
+  "residual_Caputo"       -> N[Abs[numCaputo - target], 10]
+}

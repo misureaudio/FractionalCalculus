@@ -1,0 +1,63 @@
+{
+  "x": 0.5,
+  "alpha": 1.5,
+  "analytic": 0.0,
+  "note": "D^{3/2}_RL[sqrt(x)] = d^2/dx^2[(sqrt(pi)/2) x] = 0 exactly (null space: beta+1-alpha=0). Metric = abs_err.",
+  "pyfod_grunwaldletnikov": {
+    "value": -4.978577913623287e-07,
+    "sec": 75.57,
+    "abs_err": 4.978577913623287e-07
+  },
+  "numfracpy_RL_der2": {
+    "value": 0.003988242419111998,
+    "sec": 0.01,
+    "abs_err": 0.003988242419111998
+  },
+  "differint_GLpoint": {
+    "value": -6.960060123676836e-07,
+    "sec": 0.0,
+    "abs_err": 6.960060123676836e-07
+  },
+  "differint_GL_fft": {
+    "value": 0.4659852204697486,
+    "grid_x": 0.4998749687421856,
+    "sec": 0.0,
+    "abs_err": 0.4659852204697486
+  },
+  "direct_GL_sum": {
+    "value": -4.976461493458533e-07,
+    "sec": 0.0,
+    "abs_err": 4.976461493458533e-07
+  },
+  "differint_RL": {
+    "error": "ZeroDivisionError: zero to a negative power",
+    "sec": 0.0
+  },
+  "differint_RLpoint": {
+    "error": "ZeroDivisionError: zero to a negative power",
+    "sec": 0.0
+  },
+  "pyfod_riemannliouville": {
+    "value": NaN,
+    "sec": 0.01,
+    "abs_err": NaN
+  },
+  "numfracpy_RL_der1": {
+    "error": "ValueError: could not convert string to float: np.str_('alpha cannot be greater or equal than one')",
+    "sec": 0.0
+  },
+  "differint_CaputoL1": {
+    "error": "ValueError: Alpha must be in (0, 1) for this method.",
+    "sec": 0.0
+  },
+  "pyfod_caputo": {
+    "value": -Infinity,
+    "sec": 0.0,
+    "abs_err": Infinity
+  },
+  "numfracpy_Caputo_der2": {
+    "value": -79.78446783786744,
+    "sec": 0.01,
+    "abs_err": 79.78446783786744
+  }
+}
